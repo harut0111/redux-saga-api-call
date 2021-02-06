@@ -1,17 +1,29 @@
 .gallery {
-  border: 1px solid black;
-  width: 80%;
+  position: relative;
+  width: 100%;
+  background-color: #ffff;
+  min-height: 100vh;
 
-    img {
-      max-width: 200px;
-      max-height: 250px;
-      width: auto;
-      height: auto;
+  .more-images {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-top: 1px solid #4caf50;
+    border-bottom: 1px solid #4caf50;
+    color: #4caf50;
+    padding: 10px 20px;
+    font-size: 16px;
+
+    &:hover {
+      background-color: #4caf50;
+      color: white;
     }
+  }
 
   .photos {
     line-height: 0;
-
     -webkit-column-count: 5;
     -webkit-column-gap: 0px;
     -moz-column-count: 5;
@@ -22,6 +34,8 @@
     img {
       width: 100% !important;
       height: auto !important;
+      padding: 4px;
+      box-sizing: border-box;
     }
   }
   @media (max-width: 1200px) {

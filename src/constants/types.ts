@@ -5,7 +5,7 @@ interface Category {
   error: string;
   list: { id: number; name: string }[];
 }
-interface Image {
+export interface Image {
   isFetching: boolean;
   error: string;
   list: { id: number; url: string; width: string; height: string }[];
@@ -42,10 +42,16 @@ interface GetImagesFail {
   error: string;
 }
 
+interface GetMoreImagesSuccess {
+  type: typeof actionTypes.GET_MORE_IMAGES_SUCCESS;
+  images: Image["list"];
+}
+
 export type Action =
   | GetCategories
   | GetCategoriesSuccess
   | GetCategoriesFail
   | GetImages
   | GetImagesSuccess
-  | GetImagesFail;
+  | GetImagesFail
+  | GetMoreImagesSuccess;

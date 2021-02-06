@@ -1,5 +1,6 @@
 import * as actionTypes from "../../constants/actionTypes";
 import { DefaultRootState, Action } from "../../constants/types";
+import filterDuplicatedIDs from "../../helpers/filterDuplicatedIDs";
 
 const initialState: DefaultRootState = {
   category: {
@@ -15,7 +16,7 @@ const initialState: DefaultRootState = {
 };
 
 const rootReducer = (state = initialState, action: Action) => {
-  console.log('state', state)
+  console.log("state", state);
   console.log("action", action);
   switch (action.type) {
     case actionTypes.GET_CATEGORIES:
@@ -62,6 +63,15 @@ const rootReducer = (state = initialState, action: Action) => {
         },
       };
 
+    case actionTypes.GET_MORE_IMAGES_SUCCESS:
+      return {
+        ...state,
+        image: {
+          ...state.image,
+          isFetching: false,
+          list: filterDuplicatedIDs(state.image.list, action.images),
+        },
+      };
     default:
       return state;
   }

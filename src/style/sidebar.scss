@@ -1,11 +1,29 @@
 .sidebar {
-    width: 200px;
-    height: 500px;
-    border: 1px solid black;
-    margin-right: 10px;
+  // flex-grow: 1;
+  color: #fff;
+  width: 16rem;
+  font-weight: 300;
 
-    ul {
-        display: flex;
-        flex-direction: column;
+  ul {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+
+    .active {
+      color: red;
     }
+
+    a {
+      color: #fff;
+      padding: 0.2rem 1rem;
+      text-transform: capitalize;
+    }
+  }
+
+  &-content {
+    position: sticky;
+    top: 1rem;
+    padding: 1rem;
+  }
 }

@@ -20,15 +20,25 @@ function* fetchImages(action: { type: string; params: Params }) {
     yield put({ type: actionTypes.GET_IMAGES_FAIL, error: error.message });
   }
 }
+function* fetchMoreImages(action: { type: string; params: Params }) {
+  try {
+    const images = yield call(Api.getImages, action.params);
+    yield put({ type: actionTypes.GET_MORE_IMAGES_SUCCESS, images });
+  } catch (error) {
+    // yield put({ type: actionTypes.GET_IMAGES_FAIL, error: error.message });
+  }
+}
 
 function* watchGetCategories() {
   yield takeLatest(actionTypes.GET_CATEGORIES, fetchCategories);
 }
-
 function* watchGetImages() {
   yield takeLatest(actionTypes.GET_IMAGES, fetchImages);
 }
+function* watchGetMoreImages() {
+  yield takeLatest(actionTypes.GET_MORE_IMAGES, fetchMoreImages);
+}
 
 export default function* rootSaga() {
-  yield all([watchGetCategories(), watchGetImages()]);
+  yield all([watchGetCategories(), watchGetImages(), watchGetMoreImages()]);
 }
