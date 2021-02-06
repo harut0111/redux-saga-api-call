@@ -1,18 +1,67 @@
-import { GET_CATEGORIES_FAIL, GET_CATEGORIES_SUCCESS } from "../../constants/actionTypes";
+import * as actionTypes from "../../constants/actionTypes";
 import { DefaultRootState, Action } from "../../constants/types";
 
 const initialState: DefaultRootState = {
-  categories: [],
+  category: {
+    isFetching: false,
+    error: "",
+    list: [],
+  },
+  image: {
+    isFetching: false,
+    error: "",
+    list: [],
+  },
 };
 
 const rootReducer = (state = initialState, action: Action) => {
+  console.log('state', state)
   console.log("action", action);
   switch (action.type) {
-    case GET_CATEGORIES_SUCCESS:
-      return { ...state, categories: action.categories };
-    case GET_CATEGORIES_FAIL:
-      console.log(action.error)
-      return state;
+    case actionTypes.GET_CATEGORIES:
+      return { ...state, category: { ...state.category, isFetching: true } };
+    case actionTypes.GET_CATEGORIES_SUCCESS:
+      return {
+        ...state,
+        category: {
+          ...state.category,
+          isFetching: false,
+          list: action.categories,
+        },
+      };
+    case actionTypes.GET_CATEGORIES_FAIL:
+      return {
+        ...state,
+        category: {
+          ...state.category,
+          isFetching: false,
+          error: action.error,
+        },
+      };
+
+    case actionTypes.GET_IMAGES:
+      return { ...state, image: { ...state.image, isFetching: true } };
+
+    case actionTypes.GET_IMAGES_SUCCESS:
+      return {
+        ...state,
+        image: {
+          ...state.image,
+          isFetching: false,
+          list: action.images,
+        },
+      };
+
+    case actionTypes.GET_IMAGES_FAIL:
+      return {
+        ...state,
+        image: {
+          ...state.image,
+          isFetching: false,
+          error: action.error,
+        },
+      };
+
     default:
       return state;
   }

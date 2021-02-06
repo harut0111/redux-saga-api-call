@@ -3,4 +3,9 @@
     height: 500px;
     border: 1px solid black;
     margin-right: 10px;
+
+    ul {
+        display: flex;
+        flex-direction: column;
+    }
 }
