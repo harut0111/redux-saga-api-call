@@ -13,13 +13,16 @@
   }
 
   .more-images {
-    position: relative;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     border-top: 1px solid #4caf50;
-    border-bottom: 1px solid #4caf50;
     color: #4caf50;
     padding: 10px 20px;
     font-size: 16px;
@@ -38,6 +41,7 @@
     -moz-column-gap: 0px;
     column-count: 5;
     column-gap: 0px;
+    margin-bottom: 40px;
 
     img {
       width: 100% !important;
@@ -74,4 +78,11 @@
       column-count: 1;
     }
   }
+}
+
+.empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4vmin;
 }

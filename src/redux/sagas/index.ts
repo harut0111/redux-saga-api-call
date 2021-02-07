@@ -6,7 +6,6 @@ import { Params } from "../actions";
 function* fetchCategories() {
   try {
     const categories = yield call(Api.getCategories);
-    // throw new Error("asd")
     yield put({ type: actionTypes.GET_CATEGORIES_SUCCESS, categories });
   } catch (error) {
     yield put({ type: actionTypes.GET_CATEGORIES_FAIL, error: error.message });
@@ -25,7 +24,7 @@ function* fetchMoreImages(action: { type: string; params: Params }) {
     const images = yield call(Api.getImages, action.params);
     yield put({ type: actionTypes.GET_MORE_IMAGES_SUCCESS, images });
   } catch (error) {
-    // yield put({ type: actionTypes.GET_IMAGES_FAIL, error: error.message });
+    yield put({ type: actionTypes.GET_MORE_IMAGES_FAIL, error: error.message });
   }
 }
 

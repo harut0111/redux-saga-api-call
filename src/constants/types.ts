@@ -47,6 +47,11 @@ interface GetMoreImagesSuccess {
   images: Image["list"];
 }
 
+interface GetMoreImagesFail {
+  type: typeof actionTypes.GET_MORE_IMAGES_FAIL;
+  error: string;
+}
+
 export type Action =
   | GetCategories
   | GetCategoriesSuccess
@@ -54,4 +59,5 @@ export type Action =
   | GetImages
   | GetImagesSuccess
   | GetImagesFail
-  | GetMoreImagesSuccess;
+  | GetMoreImagesSuccess
+  | GetMoreImagesFail;

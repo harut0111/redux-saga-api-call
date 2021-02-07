@@ -8,7 +8,6 @@ export default class Api {
     return await response.json();
   }
 
-  // https://api.thecatapi.com/v1/images/search?limit=30&category_ids=2
   static async getImages({ limit, category_ids }: Params) {
     const response = await fetch(
       `${API_URL}/images/search?limit=${limit}&category_ids=${category_ids}`

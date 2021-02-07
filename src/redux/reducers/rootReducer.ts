@@ -16,8 +16,6 @@ const initialState: DefaultRootState = {
 };
 
 const rootReducer = (state = initialState, action: Action) => {
-  console.log("state", state);
-  console.log("action", action);
   switch (action.type) {
     case actionTypes.GET_CATEGORIES:
       return { ...state, category: { ...state.category, isFetching: true } };
@@ -68,8 +66,16 @@ const rootReducer = (state = initialState, action: Action) => {
         ...state,
         image: {
           ...state.image,
-          isFetching: false,
           list: filterDuplicatedIDs(state.image.list, action.images),
+        },
+      };
+
+    case actionTypes.GET_MORE_IMAGES_FAIL:
+      return {
+        ...state,
+        image: {
+          ...state.image,
+          error: action.error,
         },
       };
     default:
