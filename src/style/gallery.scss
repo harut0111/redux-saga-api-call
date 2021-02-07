@@ -4,6 +4,14 @@
   background-color: #ffff;
   min-height: 100vh;
 
+  .gallery-load {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .more-images {
     position: relative;
     display: flex;

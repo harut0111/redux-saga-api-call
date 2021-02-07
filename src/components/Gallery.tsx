@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { DefaultRootState } from "../constants/types";
+import Loader from "../core/loader";
 import useSearchParams from "../core/useSearchParams";
 import { getImages, getMoreImages } from "../redux/actions";
 
@@ -28,7 +29,7 @@ const Gallery: React.FC = () => {
   return (
     <div className="gallery">
       {image.isFetching ? (
-        <div>Loading ...</div>
+        <Loader className="gallery-load" />
       ) : (
         <>
           <section className="photos">

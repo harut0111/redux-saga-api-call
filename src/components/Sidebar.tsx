@@ -4,6 +4,7 @@ import { getCategories } from "../redux/actions";
 import { DefaultRootState } from "../constants/types";
 import { NavLink } from "react-router-dom";
 import useSearchParams from "../core/useSearchParams";
+import Loader from "../core/loader";
 
 const Sidebar: React.FC = () => {
   const { category_ids: id } = useSearchParams(["category_ids"]);
@@ -19,7 +20,7 @@ const Sidebar: React.FC = () => {
   return (
     <div className="sidebar">
       {category.isFetching ? (
-        <div>Loading</div>
+        <Loader className="sidebar-load" />
       ) : (
         <div className="sidebar-content">
           <h2>Category</h2>

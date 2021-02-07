@@ -1,8 +1,12 @@
 .sidebar {
-  // flex-grow: 1;
   color: #fff;
   width: 16rem;
   font-weight: 300;
+
+  &-load {
+    display: flex;
+    justify-content: center;
+  }
 
   ul {
     display: flex;
