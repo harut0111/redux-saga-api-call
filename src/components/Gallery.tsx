@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { DefaultRootState } from "../constants/types";
 import Loader from "../core/loader";
 import useSearchParams from "../core/useSearchParams";
@@ -16,6 +16,7 @@ const Gallery: React.FC = () => {
 
   React.useEffect(() => {
     dispatch(getImages(params));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, params.category_ids]);
 
   const handleOnMoreImagesClick = () => {
@@ -37,7 +38,7 @@ const Gallery: React.FC = () => {
         <>
           <section className="photos">
             {image.list.map(({ id, url, height, width }) => (
-              <img key={id} src={url} height={height} width={width} />
+              <img key={id} src={url} height={height} width={width} alt="cat" />
             ))}
           </section>
           <div className="more-images" onClick={handleOnMoreImagesClick}>
