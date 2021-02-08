@@ -27,9 +27,6 @@ const Gallery: React.FC = () => {
     );
   };
 
-  if (!params.category_ids)
-    return <div className="gallery empty">Please choose the category</div>;
-
   return (
     <div className="gallery">
       {image.isFetching ? (
