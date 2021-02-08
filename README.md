@@ -1,3 +1,6 @@
+[:notebook:](https://github.com/harut0111/private-repo/blob/master/task_cats.pdf)<br/><br/>
+![redux-saga-api](public/working-diagram.gif)  
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
