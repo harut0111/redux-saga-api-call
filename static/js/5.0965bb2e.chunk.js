@@ -1,0 +1,2 @@
+(this["webpackJsonpredux-saga-api-call"]=this["webpackJsonpredux-saga-api-call"]||[]).push([[5],{54:function(a,e,s){"use strict";s.r(e);s(1);var c=s(6);e.default=function(){return Object(c.jsx)("div",{className:"gallery empty",children:"Please choose the category"})}}}]);
+//# sourceMappingURL=5.0965bb2e.chunk.js.map
