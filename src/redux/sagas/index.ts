@@ -1,4 +1,4 @@
-import { put, call, all, takeLatest } from "redux-saga/effects";
+import { put, call, takeLatest } from "redux-saga/effects";
 import * as actionTypes from "../../constants/actionTypes";
 import Api from "../../api";
 import { Params } from "../actions";
@@ -11,33 +11,30 @@ function* fetchCategories() {
     yield put({ type: actionTypes.GET_CATEGORIES_FAIL, error: error.message });
   }
 }
-function* fetchImages(action: { type: string; params: Params }) {
-  try {
-    const images = yield call(Api.getImages, action.params);
-    yield put({ type: actionTypes.GET_IMAGES_SUCCESS, images });
-  } catch (error) {
-    yield put({ type: actionTypes.GET_IMAGES_FAIL, error: error.message });
-  }
-}
-function* fetchMoreImages(action: { type: string; params: Params }) {
-  try {
-    const images = yield call(Api.getImages, action.params);
-    yield put({ type: actionTypes.GET_MORE_IMAGES_SUCCESS, images });
-  } catch (error) {
-    yield put({ type: actionTypes.GET_MORE_IMAGES_FAIL, error: error.message });
-  }
-}
 
-function* watchGetCategories() {
-  yield takeLatest(actionTypes.GET_CATEGORIES, fetchCategories);
-}
-function* watchGetImages() {
-  yield takeLatest(actionTypes.GET_IMAGES, fetchImages);
-}
-function* watchGetMoreImages() {
-  yield takeLatest(actionTypes.GET_MORE_IMAGES, fetchMoreImages);
+function* fetchImages(action: { type: string; params: Params }) {
+  if (action.type === actionTypes.GET_IMAGES) {
+    try {
+      const images = yield call(Api.getImages, action.params);
+      yield put({ type: actionTypes.GET_IMAGES_SUCCESS, images });
+    } catch (error) {
+      yield put({ type: actionTypes.GET_IMAGES_FAIL, error: error.message });
+    }
+  } else {
+    try {
+      const images = yield call(Api.getImages, action.params);
+      yield put({ type: actionTypes.GET_MORE_IMAGES_SUCCESS, images });
+    } catch (error) {
+      yield put({
+        type: actionTypes.GET_MORE_IMAGES_FAIL,
+        error: error.message,
+      });
+    }
+  }
 }
 
 export default function* rootSaga() {
-  yield all([watchGetCategories(), watchGetImages(), watchGetMoreImages()]);
+  yield takeLatest(actionTypes.GET_CATEGORIES, fetchCategories);
+  yield takeLatest(actionTypes.GET_IMAGES, fetchImages);
+  yield takeLatest(actionTypes.GET_MORE_IMAGES, fetchImages);
 }

@@ -29,7 +29,7 @@ const Sidebar: React.FC = () => {
               <NavLink
                 to={`/gallery/search?limit=10&category_ids=${item.id}`}
                 key={item.id}
-                activeClassName={item.id == id ? "active" : ""}
+                activeClassName={item.id === +id ? "active" : ""}
               >
                 {item.name}
               </NavLink>
