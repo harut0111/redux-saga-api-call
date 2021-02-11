@@ -49,6 +49,13 @@
       padding: 4px;
       box-sizing: border-box;
     }
+
+    .load-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 200px;
+    }
   }
   @media (max-width: 1200px) {
     .photos {

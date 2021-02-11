@@ -1,10 +1,13 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Img } from "react-image";
 import { useHistory } from "react-router-dom";
 import { DefaultRootState } from "../constants/types";
 import Loader from "../core/loader";
 import useSearchParams from "../core/useSearchParams";
 import { getImages, getMoreImages } from "../redux/actions";
+
+import Spinner from "../core/Spinner";
 
 const Gallery: React.FC = () => {
   const image = useSelector<DefaultRootState, DefaultRootState["image"]>(
@@ -35,7 +38,14 @@ const Gallery: React.FC = () => {
         <>
           <section className="photos">
             {image.list.map(({ id, url, height, width }) => (
-              <img key={id} src={url} height={height} width={width} alt="cat" />
+              <Img
+                key={id}
+                src={url}
+                alt={"cat"}
+                height={height}
+                width={width}
+                loader={<Spinner className={"load-wrapper"} />}
+              />
             ))}
           </section>
           <div className="more-images" onClick={handleOnMoreImagesClick}>
