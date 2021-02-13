@@ -22,13 +22,12 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    border-top: 1px solid #4caf50;
-    color: #4caf50;
+    color: #000;
     padding: 10px 20px;
     font-size: 16px;
 
     &:hover {
-      background-color: #4caf50;
+      background-color: #000;
       color: white;
     }
   }
