@@ -18,7 +18,9 @@ const Gallery: React.FC = () => {
   const params = useSearchParams(["limit", "category_ids"]);
 
   React.useEffect(() => {
-    dispatch(getImages(params));
+    let isSubscribed = true;
+    isSubscribed && dispatch(getImages(params));
+    return () => {isSubscribed = false};
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, params.category_ids]);
 

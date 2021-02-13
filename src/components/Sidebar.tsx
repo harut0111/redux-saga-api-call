@@ -14,7 +14,9 @@ const Sidebar: React.FC = () => {
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    dispatch(getCategories());
+    let isSubscribed = true;
+    isSubscribed && dispatch(getCategories());
+    return () => {isSubscribed = false};
   }, [dispatch]);
 
   return (
